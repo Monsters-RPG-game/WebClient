@@ -1,17 +1,21 @@
+import React, { StrictMode } from 'react'
+import mainStore from './store/index.js';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import App from './App';
+import './styles/fontello/css/fontello.css'
+import App from './App.js';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 0,
-    },
-  },
-});
+const target = document.getElementById('root');
+const root = ReactDOM.createRoot(target!);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <QueryClientProvider client={queryClient}>
-    <App />
-  </QueryClientProvider>,
-);
+const Root = (): React.JSX.Element => {
+  return (
+    <StrictMode>
+      <Provider store={mainStore}>
+        <App />
+      </Provider>
+    </StrictMode>
+  );
+};
+
+root.render(<Root/>);

@@ -1,12 +1,4 @@
-export * from './account';
-export * from './terminal';
-export * from './register';
-export * from './generic';
-export * from './responses';
-export * from './messages';
-export * from './commands';
-export * from './fights';
-export * from './websocket';
-export * from './logs';
-export * from './deleteAccountForm';
-export * from './map';
+export type * from './customs.js';
+export type * from './errors.js';
+export type * from './forms.js';
+export type * from './theme.js';
