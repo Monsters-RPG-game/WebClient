@@ -14,6 +14,8 @@ const Router = (): React.JSX.Element => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Components.Home />} />
         <Route path="/users" element={<Components.Users />} />
+        <Route path="/messages" element={<Components.Messages />} />
+        <Route path="/debug" element={<Components.Debug />} />
         <Route path="*" element={<Components.FourOhFour />} />
       </Routes>
     </AnimatePresence>

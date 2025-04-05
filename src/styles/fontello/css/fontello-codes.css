@@ -1,3 +1,5 @@
 
 .icon-left-open-outline:before { content: '\e800'; } /* '' */
 .icon-cog-outline:before { content: '\e801'; } /* '' */
+.icon-cancel:before { content: '\e802'; } /* '' */
+.icon-bug:before { content: '\f188'; } /* '' */

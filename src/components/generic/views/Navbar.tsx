@@ -36,6 +36,12 @@ const Navbar = ({ setAppActive, appActive, setSettings }: {
               </Link>
             </NavButton>
 
+            <NavButton data-cy="nav-button-home">
+              <Link to="/messages" replace>
+                <h4>Messages</h4>
+              </Link>
+            </NavButton>
+
             <NavButton data-cy="nav-button-route">
               <Link to="/route" replace>
                 <h4>Route</h4>
@@ -47,6 +53,13 @@ const Navbar = ({ setAppActive, appActive, setSettings }: {
             <NavButton onClick={() => sendToLogoutPage()} data-cy="nav-button-logout">
                 <h4>Logout</h4>
             </NavButton>
+            {process.env.NODE_ENV !== 'production' || process.env.DEBUG_PROD === 'true' ? (
+              <NavButton data-cy="nav-button-debug">
+                <Link to="/debug">
+                  <i className="icon-bug navIcon" />
+                </Link>
+              </NavButton>
+            ) : null}
             <NavButton data-cy="nav-button-settings" onClick={(): void => setSettings(true)}>
               <i className="icon-cog-outline navIcon" />
             </NavButton>

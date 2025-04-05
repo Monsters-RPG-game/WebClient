@@ -59,7 +59,7 @@ const Notifications = (): React.JSX.Element => {
             data-cy="notification-button-disable"
             onClick={(): void => setNotifications([])}
           >
-            <h2>X</h2>
+            <i className="icon-cancel" />
           </DisableNotifications>
         </>
       ) : null}

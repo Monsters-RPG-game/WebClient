@@ -1,3 +1,4 @@
-export interface ITestForm extends HTMLFormElement {
-  test: HTMLInputElement;
+export interface ISendMessageForm extends HTMLFormElement {
+  receiver: HTMLInputElement;
+  body: HTMLInputElement;
 }
