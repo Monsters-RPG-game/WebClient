@@ -30,6 +30,12 @@ const Navbar = ({ setAppActive, appActive, setSettings }: {
               </Link>
             </NavButton>
 
+            <NavButton data-cy="nav-button-home">
+              <Link to="/users" replace>
+                <h4>Users</h4>
+              </Link>
+            </NavButton>
+
             <NavButton data-cy="nav-button-route">
               <Link to="/route" replace>
                 <h4>Route</h4>
