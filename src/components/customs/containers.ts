@@ -8,8 +8,6 @@ import type * as localTypes from '../../types/index.js';
 export const Container = styled(motion.div)<localTypes.IDefaultChildren>`
   width: 100%;
   height: 100vh;
-  overflow-y: hidden;
-  overflow-x: hidden;
 `;
 
 /**

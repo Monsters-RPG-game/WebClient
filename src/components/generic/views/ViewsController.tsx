@@ -9,7 +9,7 @@ import Router from '../../../Router.js';
 import { App as MainApp } from '../../customs/index.js';
 import Notifications from '../../notifications/views/Component.js';
 import Loading from './Loading';
-import { getUserInfo } from '../controller.js'
+import { loginUser } from '../controller.js'
 import { useSelector } from 'react-redux';
 
 const StaticHandlers = ({ setTheme, settings, setSettings }: {
@@ -36,12 +36,12 @@ const ViewsController = ({ setAppActive, appActive, setTheme }: {
   const [finished, setFinished] = useState<boolean>(false);
 
   useEffect(() => {
-    getUserInfo().then(() => {
-
+    loginUser().then((data) => {
+        dispatch(hooks.logIn({ id: data }));
     }).catch((_err) => {
 
     }).finally(() => {
-    // Simple way to show loading screen with no data
+    // Simple way to show loading screen to emulate loading. Remove later
     setTimeout(() => {
         setFinished(true);
     }, 2000)

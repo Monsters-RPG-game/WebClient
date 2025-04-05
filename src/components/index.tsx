@@ -2,14 +2,20 @@ import Home from './home/views/Component.js';
 import FourOhFour from './generic/views/FourOhFour.js';
 import Navbar from './generic/views/Navbar.js';
 import Settings from './settings/views/Component.js';
-import NotLogged from './notLogged/views/Component.js';
+import NotLogged from './unauthorized/views/Component.js';
+import Login from './unauthorized/views/Login.js';
+import Logout from './unauthorized/views/Logout.js'
+import Register from './unauthorized/views/Register.js';
 
 const Components = {
   FourOhFour,
   Home,
   Navbar,
   Settings,
-    NotLogged
+  NotLogged,
+  Login,
+  Register,
+  Logout
 };
 
 export default Components;

@@ -5,6 +5,7 @@ import { NavBody, NavButton, NavContainer, NavIcons } from '../themed/index.js';
 import * as enums from '../../../enums/index.js';
 import * as animation from '../../../animations/index.js';
 import { Link } from '../../customs/index.js';
+import { sendToLogoutPage } from '../controller.js';
 
 const Navbar = ({ setAppActive, appActive, setSettings }: {
   setAppActive: React.Dispatch<React.SetStateAction<enums.EActiveAppStates>>;
@@ -37,6 +38,9 @@ const Navbar = ({ setAppActive, appActive, setSettings }: {
           </NavIcons>
 
           <NavIcons>
+            <NavButton onClick={() => sendToLogoutPage()} data-cy="nav-button-logout">
+                <h4>Logout</h4>
+            </NavButton>
             <NavButton data-cy="nav-button-settings" onClick={(): void => setSettings(true)}>
               <i className="icon-cog-outline navIcon" />
             </NavButton>
