@@ -5,6 +5,7 @@ import type * as enums from '../../enums/index.js';
 
 export * from './buttons';
 export * from './generic';
+export * from './text'
 export * from './containers';
 export * from './forms';
 export * from './icons';

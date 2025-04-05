@@ -6,18 +6,22 @@ import NotLogged from './unauthorized/views/Component.js';
 import Login from './unauthorized/views/Login.js';
 import Logout from './unauthorized/views/Logout.js'
 import Register from './unauthorized/views/Register.js';
+import Messages from './messages/views/Component.js'
 import Users from './users/views/Component.js'
+import Debug from './debug/views/Component.js'
 
 const Components = {
   FourOhFour,
   Home,
+  Debug,
   Navbar,
   Settings,
   NotLogged,
   Login,
   Register,
   Logout,
-  Users
+  Users,
+  Messages
 };
 
 export default Components;
