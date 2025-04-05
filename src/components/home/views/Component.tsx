@@ -11,7 +11,7 @@ const Home = (): React.JSX.Element => {
     <Container variants={animation.slideRight} initial="init" animate="visible" exit="exit">
       <ContainerBody>
         <h2>Home page</h2>
-        <h2>User is logged in as {id}</h2>
+        <h2>Hello {id}</h2>
       </ContainerBody>
     </Container>
   );

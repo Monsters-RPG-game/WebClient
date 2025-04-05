@@ -13,6 +13,7 @@ const Router = (): React.JSX.Element => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Components.Home />} />
+        <Route path="/users" element={<Components.Users />} />
         <Route path="*" element={<Components.FourOhFour />} />
       </Routes>
     </AnimatePresence>

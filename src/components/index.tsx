@@ -6,6 +6,7 @@ import NotLogged from './unauthorized/views/Component.js';
 import Login from './unauthorized/views/Login.js';
 import Logout from './unauthorized/views/Logout.js'
 import Register from './unauthorized/views/Register.js';
+import Users from './users/views/Component.js'
 
 const Components = {
   FourOhFour,
@@ -15,7 +16,8 @@ const Components = {
   NotLogged,
   Login,
   Register,
-  Logout
+  Logout,
+  Users
 };
 
 export default Components;
