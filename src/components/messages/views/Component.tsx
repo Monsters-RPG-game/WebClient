@@ -3,6 +3,7 @@ import * as animation from '../../../animations/index.js';
 import { Button, Container, ContainerBody } from '../../customs/index.js';
 import { AnimatePresence } from 'framer-motion';
 import SendMessage from './Send.js';
+import { useNavigate } from 'react-router';
 
 const ModalsController = ({ showModal, setShowModal }: {
   showModal: string | undefined;
@@ -16,6 +17,7 @@ const ModalsController = ({ showModal, setShowModal }: {
 };
 
 const Messages = (): React.JSX.Element => {
+    const navigate = useNavigate()
     const [showModal, setShowModal] = useState<string | undefined>(undefined)
 
   return <React.Fragment>
@@ -24,6 +26,7 @@ const Messages = (): React.JSX.Element => {
             <ContainerBody>
                 <h2>Messages page</h2>
                 <Button onClick={() => setShowModal('send')}>Send new message</Button>
+                <Button onClick={() => navigate('/inbox')}>Inbox</Button>
             </ContainerBody>
         </Container>
     </React.Fragment>

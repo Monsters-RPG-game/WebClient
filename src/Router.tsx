@@ -15,6 +15,7 @@ const Router = (): React.JSX.Element => {
         <Route path="/" element={<Components.Home />} />
         <Route path="/users" element={<Components.Users />} />
         <Route path="/messages" element={<Components.Messages />} />
+        <Route path="/inbox" element={<Components.Inbox />} />
         <Route path="/debug" element={<Components.Debug />} />
         <Route path="*" element={<Components.FourOhFour />} />
       </Routes>
