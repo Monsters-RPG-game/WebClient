@@ -9,6 +9,7 @@ import Register from './unauthorized/views/Register.js';
 import Messages from './messages/views/Component.js'
 import Users from './users/views/Component.js'
 import Debug from './debug/views/Component.js'
+import Inbox from './messages/views/Inbox.js'
 
 const Components = {
   FourOhFour,
@@ -21,7 +22,8 @@ const Components = {
   Register,
   Logout,
   Users,
-  Messages
+  Messages,
+  Inbox
 };
 
 export default Components;
