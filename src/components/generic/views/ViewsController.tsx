@@ -56,6 +56,7 @@ const ViewsController = ({ setAppActive, appActive, setTheme }: {
   ) : id ? (
     <>
       <Notifications />
+      <Components.Websocket />
       <MainApp id="app">
         <StaticHandlers setTheme={setTheme} settings={settings} setSettings={setSettings} />
         <Components.Navbar setAppActive={setAppActive} appActive={appActive} setSettings={setSettings} />
