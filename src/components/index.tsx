@@ -10,6 +10,7 @@ import Messages from './messages/views/Component.js'
 import Users from './users/views/Component.js'
 import Debug from './debug/views/Component.js'
 import Inbox from './messages/views/Inbox.js'
+import Websocket from './websocket/views/Component.js';
 
 const Components = {
   FourOhFour,
@@ -23,7 +24,8 @@ const Components = {
   Logout,
   Users,
   Messages,
-  Inbox
+  Inbox,
+  Websocket
 };
 
 export default Components;
