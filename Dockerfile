@@ -1,6 +1,7 @@
-FROM node:18
+FROM node:20
 
 WORKDIR /usr/src/app
+
 ADD package.json /usr/src/app
 RUN npm install
 
