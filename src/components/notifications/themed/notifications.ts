@@ -1,5 +1,5 @@
+import { styled } from '@mui/material';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 import { ExitButton } from '../../customs/index.js';
 import type * as types from '../../../types/index.js';
 
@@ -13,10 +13,10 @@ export const Notification = styled(motion.div)<types.INotificationProps>`
   padding: 10px;
   margin: 5px;
   border-radius: 5px;
-  border: 1px solid ${(props): string => props.theme.colors.default};
-  background: ${(props): string => props.theme.background.semiTransparent};
-  box-shadow: ${(props): string => `1px 1px 1px ${props.theme.colors.default}`};
-  color: ${(props): string => props.theme.colors.default};
+  border: 1px solid ${(props): string => props.theme.palette.text.primary};
+  background: ${(props): string => props.theme.palette.background.default};
+  box-shadow: ${(props): string => `1px 1px 1px ${props.theme.palette.text.primary}`};
+  color: ${(props): string => props.theme.palette.text.primary};
   z-index: 9;
 `;
 

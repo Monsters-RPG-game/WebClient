@@ -1,5 +1,5 @@
+import { styled } from '@mui/material';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 import type * as localTypes from '../../../types/theme.js';
 
 export const MessageBody = styled(motion.div)<localTypes.IDefaultChildren>`

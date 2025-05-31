@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as animation from '../../../animations'
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../customs/buttons';
+import { Button } from '@mui/material';
 import { Container, ContainerBody, Header } from '../../customs';
 
 const Register: React.FC = () => {

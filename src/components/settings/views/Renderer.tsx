@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import type { DefaultTheme } from 'styled-components';
 import * as enums from '../../../enums/index.js';
 import { InnerSection, PanelButton, Section } from '../themed/index.js';
-import { Checkbox, Header, Inline } from '../../customs/index.js';
+import { Header, Inline } from '../../customs/index.js';
+import { Checkbox } from '@mui/material'
 import changeTheme from '../utils.js';
 import * as animation from '../../../animations/index.js';
 
@@ -10,10 +10,10 @@ export const Theme = ({
   setTheme,
   theme,
 }: {
-  setTheme: React.Dispatch<React.SetStateAction<DefaultTheme>>;
-  theme: DefaultTheme;
+  setTheme: React.Dispatch<React.SetStateAction<enums.EThemes>>;
+  theme: enums.EThemes;
 }): React.JSX.Element => {
-  const [value, setValue] = useState<boolean>(theme.themeState === enums.EThemes.Dark);
+  const [value, setValue] = useState<boolean>(theme === enums.EThemes.Dark);
 
   return (
     <InnerSection>
@@ -21,7 +21,6 @@ export const Theme = ({
       <Inline>
         <h3>Dark mode</h3>
         <Checkbox
-          type="checkbox"
           data-cy="theme-checkbox"
           checked={value}
           onChange={(): void => {
@@ -67,8 +66,8 @@ export const renderButton = (
 };
 
 export const Generic = ({ setTheme, theme }: {
-  theme: DefaultTheme;
-  setTheme: React.Dispatch<React.SetStateAction<DefaultTheme>>;
+  setTheme: React.Dispatch<React.SetStateAction<enums.EThemes>>,
+  theme: enums.EThemes;
 }): React.JSX.Element => {
   return (
     <Section

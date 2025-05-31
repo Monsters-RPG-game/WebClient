@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material';
 import { ContainerBody, OverlayContainer } from '../../customs/index.js';
 import type * as localTypes from '../../../types/theme.js';
 
@@ -16,5 +16,5 @@ export const SendContainerBody = styled(ContainerBody)<localTypes.IDefaultChildr
   width: 500px;
   height: 500px;
   border: 1px solid #ddd;
-  box-shadow: ${(props): string => `1px 0 1px ${props.theme.colors.ohOrange}`};
+  box-shadow: ${(props): string => `1px 0 1px ${props.theme.palette.text.primary}`};
 `;

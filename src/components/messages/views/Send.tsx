@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as animation from '../../../animations/index.js';
-import { Button, ExitButton, Form, Header, Input, Label, Error } from '../../customs/index.js';
+import { ExitButton, Header, Form } from '../../customs/index.js';
+import { Button } from '@mui/material';
 import { SendContainer, SendContainerBody } from '../styled/send.js';
 import * as hooks from '../../../redux/index.js'
 import { ENotificationType } from '../../../enums/notifications.js';
@@ -37,15 +38,15 @@ const SendMessage = ({disable}: {disable: () => void}): React.JSX.Element => {
         <Form onSubmit={(e) => sendMessage(e as React.FormEvent<ISendMessageForm>, disable, dispatch).catch((err) => {
             setError(err.message)
         })}>
-            <Label>Receiver</Label>
-            <Input type='string' placeholder='Receiver' id='receiver' />
+            <label>Receiver</label>
+            <input type='string' placeholder='Receiver' id='receiver' />
 
-            <Label>Message</Label>
-            <Input type='string' placeholder='Body' id='body' />
+            <label>Message</label>
+            <input type='string' placeholder='Body' id='body' />
 
             <Button type='submit'>Send</Button>
         </Form>
-        {error ? <Error>{error}</Error> : null}
+        {error ? <p>{error}</p> : null} // To change
       </SendContainerBody>
     </SendContainer>
   );

@@ -1,5 +1,5 @@
+import { styled } from '@mui/material';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 import * as enums from '../../../enums/index.js';
 import type * as localTypes from '../../../types/theme.js';
 import type { INavbarProps } from '../../customs/index.js';
@@ -10,13 +10,15 @@ export const NavContainer = styled(motion.div)<localTypes.IDefaultChildren>`
   left: ${(props): number => (props.theme.appState === enums.EActiveAppStates.Active ? 0 : -75)}px;
   height: 100vh;
   width: ${(props): number => (props.theme.appState === enums.EActiveAppStates.Inactive ? 75 : 150)}px;
-  background: ${(props): string => props.theme.background.semiTransparent};
-  color: ${(props): string => props.theme.colors.default};
+  background: ${(props): string => props.theme.palette.background.default};
+  color: ${(props): string => props.theme.palette.text.primary};
   padding: 0;
   box-shadow: ${(props): string | null => {
-    return props.theme.appState === enums.EActiveAppStates.Inactive ? null : `4px 0 1px ${props.theme.shadows.default}`;
+    return props.theme.appState === enums.EActiveAppStates.Inactive
+      ? null
+      : `4px 0 1px ${props.theme.palette.grey[100]}`;
   }};
-  transition: ${(props): string => props.theme.transition.semiSlow};
+  transition: 0.75s all ease-in-out;
   z-index: 7;
 
   &:hover {
@@ -36,7 +38,7 @@ export const NavBody = styled(motion.div)<localTypes.IDefaultChildren>`
   font-size: 1.1rem;
   overflow-y: scroll;
   overflow-x: hidden;
-  transition: ${(props): string => props.theme.transition.default};
+  transition: 0.75s all ease-in-out;
   opacity: ${(props): number => (props.theme.appState === enums.EActiveAppStates.Active ? 1 : 0)};
 
   &::-webkit-scrollbar {
@@ -63,19 +65,18 @@ export const NavButton = styled('button')<localTypes.IDefaultChildren>`
   margin: 4px;
   border: none;
   cursor: pointer;
-  color: ${(props): string => props.theme.colors.default};
-  transition: ${(props): string => props.theme.transition.default};
-
+  color: ${(props): string => props.theme.palette.text.primary};
+  transition: 0.75s all ease-in-out;
   i {
     font-size: 2.3rem;
-    color: ${(props): string => props.theme.colors.ohOrange};
+    color: ${(props): string => props.theme.palette.text.primary};
     border-radius: 50%;
     background-size: 100% 100%;
   }
 `;
 
 export const NavSwitch = styled(NavButton)<INavbarProps>`
-  color: ${(props): string => props.theme.colors.ohOrange};
+  color: ${(props): string => props.theme.palette.text.primary};
   position: fixed;
   bottom: 0;
   left: 0;

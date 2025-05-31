@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { sendMessage as send } from '../controller.js'
 import * as animation from '../../../animations/index.js';
-import { Button, Container, ContainerBody, Error, Form, Input, Label } from '../../customs/index.js';
+import { Container, ContainerBody, Form } from '../../customs/index.js';
+import { Button } from '@mui/material';
 import { getChatDetails, getMessages } from '../controller.js';
 import { IDetails, IMessage } from 'src/types/messages.js';
 import { useSelector } from 'react-redux';
@@ -77,12 +78,12 @@ const Inbox = (): React.JSX.Element => {
             {target ? <Form onSubmit={(e) => sendMessage(e as React.FormEvent<ISendMessageForm>, target.user, dispatch).catch((err) => {
                 setError(err.message)
             })}>
-            <Label>Message</Label>
-            <Input type='string' placeholder='Body' id='body' />
+            <label>Message</label>
+            <input type='string' placeholder='Body' id='body' />
 
             <Button type='submit'>Send</Button>
         </Form> : <></> }
-        {error ? <Error>{error}</Error> : null}
+        {error ? <p>{error}</p> : null} // To fix
         </ContainerBody>
     </Container>
 };

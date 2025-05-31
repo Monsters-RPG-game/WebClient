@@ -1,6 +1,7 @@
 import React from 'react';
 import * as animation from '../../../animations/index.js';
-import { Button, ButtonLink, Container, ContainerBody, Header } from '../../customs/index.js';
+import { Header, Container, ContainerBody } from '../../customs/index.js';
+import { Button, Link as ButtonLink } from '@mui/material';
 
 const FourOhFour = (): React.JSX.Element => {
   return (
@@ -8,7 +9,7 @@ const FourOhFour = (): React.JSX.Element => {
       <ContainerBody>
         <Header>Four oh four</Header>
         <Button data-cy="404-button-home" type="button" className="mainButton">
-          <ButtonLink to="/" replace>
+          <ButtonLink href="/">
             Take me home
           </ButtonLink>
         </Button>

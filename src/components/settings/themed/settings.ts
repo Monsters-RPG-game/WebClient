@@ -1,5 +1,5 @@
+import { styled } from '@mui/material';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 import { NavButton } from '../../generic/themed/index.js';
 import type * as types from '../../../types/index.js';
 
@@ -18,11 +18,9 @@ export const Section = styled(motion.div)<types.ISectionProps>`
   &::-webkit-scrollbar {
     width: 15px;
     border-radius: 50px;
-    background: ${(props): string => props.theme.background.opposite};
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${(props): string => props.theme.colors.ohOrange};
     border-radius: 50px;
 
     &:hover {
@@ -39,7 +37,7 @@ export const Body = styled(motion.div)<types.IDefaultChildren>`
   flex-wrap: wrap;
   width: 140px;
   height: 100%;
-  transition: ${(props): string => props.theme.transition.default};
+  transition: 0.75s all ease-in-out;
 `;
 
 export const PanelButton = styled(NavButton)<types.ISettingsButtons>`
@@ -49,22 +47,22 @@ export const PanelButton = styled(NavButton)<types.ISettingsButtons>`
   &:after {
     position: fixed;
     content: '•';
-    color: ${(props): string => (props.$active ? props.theme.colors.ohOrange : 'transparent')};
+    color: ${(props): string => (props.$active ? props.theme.palette.text.primary : 'transparent')};
     display: inline-block;
     font-weight: bolder;
     text-align: center;
     margin-left: 0.5em;
     cursor: ${(props): string => (props.$active ? 'pointer' : 'default')};
-    transition: ${(props): string => props.theme.transition.default};
+    transition: 0.75s all ease-in-out;
   }
 
   &:hover {
-    color: ${(props): string => props.theme.colors.ohOrange};
+    color: ${(props): string => props.theme.palette.text.primary};
   }
 `;
 
 export const InnerSection = styled(Section)<types.ISectionProps>`
-  box-shadow: ${(props): string => `1px 0 3px ${props.theme.shadows.default}`};
+  box-shadow: ${(props): string => `1px 0 3px ${props.theme.palette.grey[100]}`};
   border-radius: 10px;
 
   header {

@@ -1,6 +1,7 @@
 import React from 'react';
 import * as animation from '../../../animations/index.js';
-import { Button, Container, ContainerBody, Header } from '../../customs/index.js';
+import { Container, ContainerBody, Header } from '../../customs/index.js';
+import { Button } from '@mui/material'
 import { sendToLoginPage, sendToRegisterPage } from '../controllers/index.js';
 
 const NotLogged = (): React.JSX.Element => {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import * as animation from '../../../animations'
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../customs/buttons';
 import { Container, ContainerBody, Header } from '../../customs';
+import { Button } from '@mui/material';
 
 const Login: React.FC = () => {
   const [message, setMessage] = useState<string>('');

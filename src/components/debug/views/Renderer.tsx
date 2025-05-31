@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { InnerSection } from '../../settings/themed';
-import { Button, Form, Input, Label } from '../../customs';
+import { Button, Input } from '@mui/material';
+import { Form } from '../../customs'
 import { useMainDispatch } from '../../../redux/hooks';
 import { toggleNotification } from '../controller';
 
@@ -11,7 +12,7 @@ export const ToggleNotification = (): React.JSX.Element => {
   return (
     <InnerSection>
       <Form onSubmit={(e): void => toggleNotification(e, text, dispatch)} data-cy="debug-form-defaultNotification">
-        <Label>Toggle notification</Label>
+        <label>Toggle notification</label>
         <Input type="text" placeholder="Text" onChange={(e): void => setText(e.target.value)} required />
         <Button type="submit" className="mainButton">
           Send

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as animation from '../../../animations/index.js';
-import { Container, ContainerBody, Table } from '../../customs/index.js';
+import { Container, ContainerBody } from '../../customs/index.js';
 import { getAllUsers } from '../controller.js';
 import * as hooks from '../../../redux/index.js'
 import { ENotificationType } from '../../../enums/notifications.js';
@@ -23,7 +23,7 @@ const Users = (): React.JSX.Element => {
     <Container variants={animation.slideRight} initial="init" animate="visible" exit="exit">
       <ContainerBody>
         <h2>Users page</h2>
-        <Table>
+        <table>
             <tr>
                 <th>Id</th>
                 <th>Login</th>
@@ -34,7 +34,7 @@ const Users = (): React.JSX.Element => {
                 <th>{u.login}</th>
             </tr>
         })}
-        </Table>
+        </table>
       </ContainerBody>
     </Container>
   );

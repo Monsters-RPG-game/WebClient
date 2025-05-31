@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as animation from '../../../animations/index.js';
-import { Button, Container, ContainerBody } from '../../customs/index.js';
+import { Container, ContainerBody } from '../../customs/index.js';
+import { Button } from '@mui/material'
 import { AnimatePresence } from 'framer-motion';
 import SendMessage from './Send.js';
 import { useNavigate } from 'react-router';

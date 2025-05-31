@@ -1,5 +1,5 @@
+import { styled } from '@mui/material';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 import type * as localTypes from '../../types/index.js';
 
 /**
@@ -23,18 +23,16 @@ export const ContainerBody = styled(Container)<localTypes.IContainerProps>`
   flex-wrap: ${(props): string => props.$wrap ?? 'wrap'};
   overflow-y: ${(props): string => (props.$noScroll ? 'hidden' : 'auto')};
   overflow-x: hidden;
-  background: ${(props): string => props.theme.background.semiTransparent};
-  color: ${(props): string => props.theme.colors.default};
-  transition: ${(props): string => props.theme.transition.semiSlow};
+  background: ${(props): string => props.theme.palette.background.default};
+  color: ${(props): string => props.theme.palette.text.primary};
+  transition: 0.75s all ease-in-out;
 
   &::-webkit-scrollbar {
     width: 15px;
     border-radius: 50px;
-    background: ${(props): string => props.theme.background.opposite};
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${(props): string => props.theme.colors.ohOrange};
     border-radius: 50px;
 
     &:hover {

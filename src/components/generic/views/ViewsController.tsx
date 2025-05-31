@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import * as hooks from '../../../redux/index.js';
-import type { DefaultTheme } from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import type * as enums from '../../../enums/index.js';
 import { useMainDispatch } from '../../../redux/hooks.js';
@@ -12,22 +11,24 @@ import Loading from './Loading';
 import { loginUser } from '../controller.js'
 import { useSelector } from 'react-redux';
 
-const StaticHandlers = ({ setTheme, settings, setSettings }: {
-  setTheme: React.Dispatch<React.SetStateAction<DefaultTheme>>;
+const StaticHandlers = ({ setTheme, settings, setSettings, theme }: {
+  setTheme: React.Dispatch<React.SetStateAction<enums.EThemes>>;
   setSettings: React.Dispatch<React.SetStateAction<boolean>>;
   settings: boolean;
+  theme: enums.EThemes;
 }): React.JSX.Element => {
   return (
     <AnimatePresence mode="wait">
-      {settings ? <Components.Settings setTheme={setTheme} disablePanel={(): void => setSettings(false)} /> : null}
+      {settings ? <Components.Settings theme={theme} setTheme={setTheme} disablePanel={(): void => setSettings(false)} /> : null}
     </AnimatePresence>
   );
 };
 
-const ViewsController = ({ setAppActive, appActive, setTheme }: {
+const ViewsController = ({ setAppActive, appActive, setTheme, theme }: {
   setAppActive: React.Dispatch<React.SetStateAction<enums.EActiveAppStates>>;
   appActive: enums.EActiveAppStates;
-  setTheme: React.Dispatch<React.SetStateAction<DefaultTheme>>;
+  theme: enums.EThemes;
+  setTheme: React.Dispatch<React.SetStateAction<enums.EThemes>>;
 }): React.JSX.Element => {
   const dispatch = useMainDispatch();
   const { id } = useSelector(hooks.accountState);
@@ -58,7 +59,7 @@ const ViewsController = ({ setAppActive, appActive, setTheme }: {
       <Notifications />
       <Components.Websocket />
       <MainApp id="app">
-        <StaticHandlers setTheme={setTheme} settings={settings} setSettings={setSettings} />
+        <StaticHandlers setTheme={setTheme} theme={theme} settings={settings} setSettings={setSettings} />
         <Components.Navbar setAppActive={setAppActive} appActive={appActive} setSettings={setSettings} />
         <Router />
       </MainApp>

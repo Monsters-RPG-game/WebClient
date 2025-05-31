@@ -1,5 +1,5 @@
+import { styled } from '@mui/material';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 import { moveAround, rotate } from './animations.js';
 
 export const LoadingCircle = styled(motion.div)`
@@ -7,7 +7,7 @@ export const LoadingCircle = styled(motion.div)`
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 1px solid ${(props): string => props.theme.colors.default};
+  border: 1px solid ${(props): string => props.theme.palette.text.primary};
   box-sizing: border-box;
 
   &::after {
@@ -20,7 +20,7 @@ export const LoadingCircle = styled(motion.div)`
     border-radius: 50%;
     box-sizing: border-box;
     border: 2px solid transparent;
-    border-right-color: ${(props): string => props.theme.colors.ohOrange};
+    border-right-color: ${(props): string => props.theme.palette.text.primary};
     animation: ${rotate} 2s linear infinite;
   }
 `;
@@ -30,13 +30,13 @@ export const LoadingPill = styled(motion.div)`
   width: 300px;
   height: 50px;
   border-radius: 10px;
-  border: 1px solid ${(props): string => props.theme.colors.default};
-  box-shadow: ${(props): string => `1px 1px 3px ${props.theme.colors.default}`};
+  border: 1px solid ${(props): string => props.theme.palette.text.primary};
+  box-shadow: ${(props): string => `1px 1px 3px ${props.theme.palette.text.primary}`};
   box-sizing: border-box;
 
   &::after {
     content: '';
-    background: ${(props): string => props.theme.colors.ohOrange};
+    background: ${(props): string => props.theme.palette.text.primary};
     position: absolute;
     top: 0;
     left: 0;

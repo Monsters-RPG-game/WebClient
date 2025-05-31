@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import type { DefaultTheme } from 'styled-components';
-import { useTheme } from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import * as animation from '../../../animations/index.js';
 import { Body, Section } from '../themed/index.js';
@@ -15,11 +13,11 @@ const SettingsPanel = ({ setTarget, target }: {
   return <Body>{renders.renderButton(setTarget, target)}</Body>;
 };
 
-const SettingsBody = ({ target, setTheme }: {
-  target: enums.ESettingsPanels;
-  setTheme: React.Dispatch<React.SetStateAction<DefaultTheme>>;
+const SettingsBody = ({ target, setTheme, theme }: {
+  target: enums.ESettingsPanels,
+  theme: enums.EThemes,
+  setTheme: React.Dispatch<React.SetStateAction<enums.EThemes>>,
 }) => {
-  const theme = useTheme();
 
   const render = (): React.JSX.Element => {
     switch (target) {
@@ -49,9 +47,10 @@ const SettingsBody = ({ target, setTheme }: {
   return <AnimatePresence mode="wait">{render()}</AnimatePresence>;
 };
 
-const Settings = ({ disablePanel, setTheme }: {
+const Settings = ({ disablePanel, setTheme, theme }: {
   disablePanel: () => void;
-  setTheme: React.Dispatch<React.SetStateAction<DefaultTheme>>;
+  theme: enums.EThemes;
+  setTheme: React.Dispatch<React.SetStateAction<enums.EThemes>>;
 }): React.JSX.Element => {
   const [target, setTarget] = useState<enums.ESettingsPanels>(enums.ESettingsPanels.Generic);
 
@@ -67,7 +66,7 @@ const Settings = ({ disablePanel, setTheme }: {
 
         <Section $wrap="nowrap" $full $centered $fill $direction="row">
           <SettingsPanel setTarget={setTarget} target={target} />
-          <SettingsBody target={target} setTheme={setTheme} />
+          <SettingsBody target={target} setTheme={setTheme} theme={theme} />
         </Section>
       </ContainerBody>
     </OverlayContainer>
