@@ -1,73 +1,114 @@
-import React from 'react';
-import toggleNav from '../utils.js';
-import * as themed from '../themed/index.js';
-import { NavBody, NavButton, NavContainer, NavIcons } from '../themed/index.js';
-import * as enums from '../../../enums/index.js';
-import * as animation from '../../../animations/index.js';
-import { Link } from '../../customs/index.js';
-import { sendToLogoutPage } from '../controller.js';
+import * as hooks from '../../../redux'
+import AppBar from '@mui/material/AppBar';
+import { useEffect, useState } from 'react'
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import MenuIcon from '@mui/icons-material/Menu';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const Navbar = ({ setAppActive, appActive, setSettings }: {
-  setAppActive: React.Dispatch<React.SetStateAction<enums.EActiveAppStates>>;
-  appActive: enums.EActiveAppStates;
-  setSettings: React.Dispatch<React.SetStateAction<boolean>>;
-}): React.JSX.Element => {
+const unauthorizedNav: {label: string, path: string}[] = [
+  { label: 'About', path: '/about' },
+];
+
+const authorizedNav:{label: string, path: string}[] = [];
+
+
+const NavBar = () => {
+  const { id } = useSelector(hooks.accountState);
+  const [anchorElNav, setAnchorElNav] = useState<HTMLElement | null>(null);
+  const [pages, setPages] = useState<{label: string, path: string}[]>([])
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+    useEffect(() => {
+        if(id) {
+            setPages(authorizedNav)
+    } else {
+            setPages(unauthorizedNav)
+        }
+    }, [id])
+
   return (
-    <>
-      <themed.NavSwitch
-        $active={appActive === enums.EActiveAppStates.Inactive}
-        data-cy="navSwitch"
-        onClick={(): void => toggleNav(setAppActive, appActive)}
-      >
-        <i className="icon-left-open-outline navIcon" />
-      </themed.NavSwitch>
-      <NavContainer id="navbar" variants={animation.slowSlideRight} initial="init" animate="visible" exit="exit">
-        <NavBody>
-          <NavIcons>
-            <NavButton data-cy="nav-button-home">
-              <Link to="/" replace>
-                <h4>Home</h4>
-              </Link>
-            </NavButton>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="fixed">
+        <Toolbar>
+          {isMobile && (
+            <>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={handleOpenNavMenu}
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                anchorEl={anchorElNav}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+              >
+                {pages.map((page) => (
+                  <MenuItem
+                    key={page.label}
+                    component={Link}
+                    to={page.path}
+                    onClick={handleCloseNavMenu}
+                  >
+                    <Typography textAlign="center">{page.label}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </>
+          )}
 
-            <NavButton data-cy="nav-button-home">
-              <Link to="/users" replace>
-                <h4>Users</h4>
-              </Link>
-            </NavButton>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1 }}
+          >
+            Monsters
+          </Typography>
 
-            <NavButton data-cy="nav-button-home">
-              <Link to="/messages" replace>
-                <h4>Messages</h4>
-              </Link>
-            </NavButton>
+          {!isMobile && (
+            <Box>
+              {pages.map((page) => (
+                <Button
+                  key={page.label}
+                  color="inherit"
+                  component={Link}
+                  to={page.path}
+                >
+                  {page.label}
+                </Button>
+              ))}
+            </Box>
+          )}
+        </Toolbar>
+      </AppBar>
 
-            <NavButton data-cy="nav-button-route">
-              <Link to="/route" replace>
-                <h4>Route</h4>
-              </Link>
-            </NavButton>
-          </NavIcons>
-
-          <NavIcons>
-            <NavButton onClick={() => sendToLogoutPage()} data-cy="nav-button-logout">
-                <h4>Logout</h4>
-            </NavButton>
-            {process.env.NODE_ENV !== 'production' || process.env.DEBUG_PROD === 'true' ? (
-              <NavButton data-cy="nav-button-debug">
-                <Link to="/debug">
-                  <i className="icon-bug navIcon" />
-                </Link>
-              </NavButton>
-            ) : null}
-            <NavButton data-cy="nav-button-settings" onClick={(): void => setSettings(true)}>
-              <i className="icon-cog-outline navIcon" />
-            </NavButton>
-          </NavIcons>
-        </NavBody>
-      </NavContainer>
-    </>
+      <Toolbar />
+    </Box>
   );
 };
 
-export default Navbar;
+export default NavBar;
+

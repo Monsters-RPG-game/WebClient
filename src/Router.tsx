@@ -13,20 +13,18 @@ const Router = (): React.JSX.Element => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Components.Home />} />
-        <Route path="/users" element={<Components.Users />} />
-        <Route path="/messages" element={<Components.Messages />} />
-        <Route path="/inbox" element={<Components.Inbox />} />
-        <Route path="/debug" element={<Components.Debug />} />
+        <Route path="/login" element={<Components.unauthorized.Login />} />
         <Route path="*" element={<Components.FourOhFour />} />
       </Routes>
     </AnimatePresence>
   ) : (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/login" element={<Components.Login />} />
-        <Route path="/logout" element={<Components.Logout />} />
-        <Route path="/register" element={<Components.Register />} />
-        <Route path="*" element={<Components.NotLogged />} />
+        <Route path="/" element={<Components.unauthorized.NotLogged />} />
+        <Route path="/login" element={<Components.unauthorized.Login />} />
+        <Route path="/logout" element={<Components.unauthorized.Logout />} />
+        <Route path="/register" element={<Components.unauthorized.Register />} />
+        <Route path="*" element={<Components.FourOhFour />} />
       </Routes>
     </AnimatePresence>
   )

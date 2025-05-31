@@ -1,12 +1,11 @@
 import React from 'react';
 import * as animation from '../../../animations/index.js';
-import { Container, ContainerBody, Header } from '../../customs/index.js';
 import * as icons from '../../customs/icons.js';
+import { FullPageContainer, Header } from '../../customs/index.js';
 
 const Loading = ({ finished }: { finished: boolean }): React.JSX.Element => {
   return (
-    <Container variants={animation.slowSlideRight} initial="init" animate="visible" exit="exit">
-      <ContainerBody>
+    <FullPageContainer variants={animation.slowSlideRight} initial="init" animate="visible" exit="exit">
         {finished ? (
           <Header>Loaded</Header>
         ) : (
@@ -15,8 +14,7 @@ const Loading = ({ finished }: { finished: boolean }): React.JSX.Element => {
             <icons.LoadingPill />
           </>
         )}
-      </ContainerBody>
-    </Container>
+    </FullPageContainer>
   );
 };
 

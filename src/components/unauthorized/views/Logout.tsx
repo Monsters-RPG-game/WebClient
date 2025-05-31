@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import * as animation from '../../../animations'
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../customs/buttons';
-import { Container, ContainerBody, Header } from '../../customs';
+import { motion } from 'framer-motion'
+import { Button } from '@mui/material';
 
 const Logout: React.FC = () => {
   const [message, setMessage] = useState<string>('');
@@ -16,12 +16,10 @@ const Logout: React.FC = () => {
   });
 
   return (
-    <Container variants={animation.slideRight} initial="init" animate="visible" exit="exit">
-      <ContainerBody>
-        <Header>{message}</Header>
+    <motion.div variants={animation.slideRight} initial="init" animate="visible" exit="exit">
+        <header>{message}</header>
         <Button onClick={() => navigate('/')}>Go home</Button>
-      </ContainerBody>
-    </Container>
+    </motion.div>
   );
 };
 

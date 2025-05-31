@@ -51,13 +51,16 @@
     "noPropertyAccessFromIndexSignature": false,
     "noStrictGenericChecks": false,
     "outDir": "./build",
+    "paths": {
+      "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
+    },
     "preserveSymlinks": true,
     "pretty": true,
     "preserveConstEnums": true,
     "removeComments": false,
     "resolveJsonModule": true,
     "rootDir": ".",
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "suppressExcessPropertyErrors": false,
     "suppressImplicitAnyIndexErrors": false,
     "strict": true,

@@ -1,33 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion'
 import * as hooks from '../../../redux/index.js';
-import type { DefaultTheme } from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import type * as enums from '../../../enums/index.js';
 import { useMainDispatch } from '../../../redux/hooks.js';
 import Components from '../../index.js';
 import Router from '../../../Router.js';
-import { App as MainApp } from '../../customs/index.js';
-import Notifications from '../../notifications/views/Component.js';
 import Loading from './Loading';
 import { loginUser } from '../controller.js'
 import { useSelector } from 'react-redux';
+import NavBar from './Navbar.js';
 
-const StaticHandlers = ({ setTheme, settings, setSettings }: {
-  setTheme: React.Dispatch<React.SetStateAction<DefaultTheme>>;
+const StaticHandlers = (_params: {
+  setTheme: React.Dispatch<React.SetStateAction<enums.EThemes>>;
   setSettings: React.Dispatch<React.SetStateAction<boolean>>;
   settings: boolean;
+  theme: enums.EThemes;
 }): React.JSX.Element => {
   return (
     <AnimatePresence mode="wait">
-      {settings ? <Components.Settings setTheme={setTheme} disablePanel={(): void => setSettings(false)} /> : null}
     </AnimatePresence>
   );
 };
 
-const ViewsController = ({ setAppActive, appActive, setTheme }: {
-  setAppActive: React.Dispatch<React.SetStateAction<enums.EActiveAppStates>>;
-  appActive: enums.EActiveAppStates;
-  setTheme: React.Dispatch<React.SetStateAction<DefaultTheme>>;
+const ViewsController = ({setTheme, theme }: {
+  theme: enums.EThemes;
+  setTheme: React.Dispatch<React.SetStateAction<enums.EThemes>>;
 }): React.JSX.Element => {
   const dispatch = useMainDispatch();
   const { id } = useSelector(hooks.accountState);
@@ -55,16 +53,16 @@ const ViewsController = ({ setAppActive, appActive, setTheme }: {
     <Loading finished={finished} />
   ) : id ? (
     <>
-      <Notifications />
       <Components.Websocket />
-      <MainApp id="app">
-        <StaticHandlers setTheme={setTheme} settings={settings} setSettings={setSettings} />
-        <Components.Navbar setAppActive={setAppActive} appActive={appActive} setSettings={setSettings} />
+      <motion.div id="app">
+        <NavBar/>
+        <StaticHandlers setTheme={setTheme} theme={theme} settings={settings} setSettings={setSettings} />
         <Router />
-      </MainApp>
+      </motion.div>
     </>
   ) : (
     <>
+        <NavBar/>
         <Router />
     </>
   )

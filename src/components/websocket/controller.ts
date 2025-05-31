@@ -1,16 +1,10 @@
-import { ENotificationType } from '../../enums/notifications.js';
-import * as hooks from '../../redux/index.js';
 import type { IWebsocketMessage } from './types.js';
-import type { MainDispatch } from '../../store/types.js';
 
 export default class Controller {
-  // eslint-disable-next-line no-use-before-define
   private static _instance: Controller | undefined = undefined;
-  private readonly _dispatch: MainDispatch;
   private _connection: WebSocket | undefined;
 
-  constructor(dispatch: MainDispatch) {
-    this._dispatch = dispatch;
+  constructor() {
     this.init();
   }
 
@@ -30,12 +24,8 @@ export default class Controller {
     this._connection = value;
   }
 
-  private get dispatch(): MainDispatch {
-    return this._dispatch;
-  }
-
-  static getInstance(dispatch?: MainDispatch): Controller {
-    Controller.instance ??= new Controller(dispatch!);
+  static getInstance(): Controller {
+    Controller.instance ??= new Controller();
 
     return Controller.instance;
   }
@@ -78,7 +68,6 @@ export default class Controller {
   private onMessage(event: IWebsocketMessage): void {
     console.log('Got new message');
     console.log(event);
-    this.dispatch(hooks.addNotification({ type: ENotificationType.Default, message: 'Received new message' }));
   }
 
   private errorWrapper(callback: () => void): void {
