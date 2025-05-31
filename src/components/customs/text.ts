@@ -1,7 +1,7 @@
 import { styled } from '@mui/material';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
-// eslint-disable-next-line import/prefer-default-export
 export const Header = styled(motion.header)`
   width: 50%;
   text-align: center;
@@ -9,4 +9,17 @@ export const Header = styled(motion.header)`
   font-weight: lighter;
   letter-spacing: 0.9px;
   padding: 1rem;
+`;
+
+export const ButtonLink = styled(Link)`
+  text-decoration: none;
+  text-align: left;
+  color: ${(props): string => props.theme.palette.text.primary};
+  transition: 0.75s all ease-in-out;
+`;
+
+export const InvisibleLink = styled(ButtonLink)`
+  &:hover {
+    color: ${(props): string => props.theme.palette.text.secondary};
+  }
 `;

@@ -5,17 +5,19 @@ import Login from './unauthorized/views/Login.js';
 import Logout from './unauthorized/views/Logout.js'
 import Register from './unauthorized/views/Register.js';
 import Websocket from './websocket/views/Component.js';
+import About from './about/views/Component.js'
 
 const Components = {
+  About,
   FourOhFour,
   Home,
   Websocket,
 
   unauthorized: {
-    NotLogged,
     Login,
-    Register,
-    Logout
+    Logout,
+    NotLogged,
+    Register
   }
 };
 

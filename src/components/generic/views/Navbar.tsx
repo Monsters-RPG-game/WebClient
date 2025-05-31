@@ -13,13 +13,15 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { InvisibleLink } from '../../customs';
 
 const unauthorizedNav: {label: string, path: string}[] = [
   { label: 'About', path: '/about' },
 ];
 
-const authorizedNav:{label: string, path: string}[] = [];
-
+const authorizedNav:{label: string, path: string}[] = [
+  { label: 'About', path: '/about' },
+];
 
 const NavBar = () => {
   const { id } = useSelector(hooks.accountState);
@@ -85,7 +87,9 @@ const NavBar = () => {
             component="div"
             sx={{ flexGrow: 1 }}
           >
-            Monsters
+            <InvisibleLink to="/">
+              Monsters
+            </InvisibleLink>
           </Typography>
 
           {!isMobile && (
