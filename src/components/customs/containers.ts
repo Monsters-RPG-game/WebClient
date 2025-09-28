@@ -10,6 +10,24 @@ export const Container = styled(motion.div)<localTypes.IDefaultChildren>`
   height: 100vh;
 `;
 
+export const Span = styled(motion.span)<localTypes.ISpanProps>`
+  width: ${(props): string => props.$width ?? 'fit-content'};
+  max-width: 1200px;
+  margin: 0 10px 0 10px;
+  text-align: left;
+
+  * {
+    margin: ${(props): string | number => props.$childrenMargin ?? 0};
+    ${(props): string | undefined =>
+      props.$block
+        ? `
+        width: fit-content;
+        display: block
+      `
+        : undefined}
+  }
+`;
+
 /**
  * Container's body user to center elements inside.
  * @param props Additional props for inline-styling.
@@ -19,6 +37,7 @@ export const ContainerBody = styled(Container)<localTypes.IContainerProps>`
   display: flex;
   flex-direction: ${(props): string => props.$direction ?? 'column'};
   justify-content: ${(props): string => props.$justify ?? 'center'};
+  text-align: ${(props): string => props.$textAlign ?? 'auto'};
   align-items: ${(props): string => props.$align ?? 'center'};
   flex-wrap: ${(props): string => props.$wrap ?? 'wrap'};
   overflow-y: ${(props): string => (props.$noScroll ? 'hidden' : 'auto')};
@@ -34,7 +53,7 @@ export const ContainerBody = styled(Container)<localTypes.IContainerProps>`
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${(props): string => props.theme.colors.ohOrange};
+    background: ${(props): string => props.theme.colors.primaryDefault};
     border-radius: 50px;
 
     &:hover {

@@ -22,7 +22,7 @@ export const Section = styled(motion.div)<types.ISectionProps>`
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${(props): string => props.theme.colors.ohOrange};
+    background: ${(props): string => props.theme.colors.primaryDefault};
     border-radius: 50px;
 
     &:hover {
@@ -49,7 +49,7 @@ export const PanelButton = styled(NavButton)<types.ISettingsButtons>`
   &:after {
     position: fixed;
     content: '•';
-    color: ${(props): string => (props.$active ? props.theme.colors.ohOrange : 'transparent')};
+    color: ${(props): string => (props.$active ? props.theme.colors.primaryDefault : 'transparent')};
     display: inline-block;
     font-weight: bolder;
     text-align: center;
@@ -59,7 +59,7 @@ export const PanelButton = styled(NavButton)<types.ISettingsButtons>`
   }
 
   &:hover {
-    color: ${(props): string => props.theme.colors.ohOrange};
+    color: ${(props): string => props.theme.colors.primaryDefault};
   }
 `;
 

@@ -23,10 +23,11 @@ const Router = (): React.JSX.Element => {
   ) : (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Components.Home />} />
         <Route path="/login" element={<Components.Login />} />
         <Route path="/logout" element={<Components.Logout />} />
         <Route path="/register" element={<Components.Register />} />
-        <Route path="*" element={<Components.NotLogged />} />
+        <Route path="*" element={<Components.NotAuthorized />} />
       </Routes>
     </AnimatePresence>
   )

@@ -7,7 +7,7 @@ import Theme, { GlobalStyle } from './components/customs/index.js';
 import ViewsController from './components/generic/views/ViewsController.js';
 
 const App = (): React.JSX.Element => {
-  const [appActive, setAppActive] = useState<enums.EActiveAppStates>(enums.EActiveAppStates.Active);
+  const [appActive, setAppActive] = useState<enums.EActiveAppStates>(enums.EActiveAppStates.Inactive);
   const [theme, setTheme] = useState<DefaultTheme>(themes.lightTheme);
 
   return (

@@ -6,14 +6,14 @@ import type * as localTypes from '../../types/index.js';
 const BaseButton = styled(motion.button)<localTypes.IDefaultChildren>`
   background: linear-gradient(
     140deg,
-    ${(props): string => props.theme.colors.ohOrange} 0.5%,
+    ${(props): string => props.theme.colors.primaryDefault} 0.5%,
     ${(props): string => props.theme.background.semiTransparent} 0.5%
   );
   background-size: 100% 100%;
   color: ${(props): string => props.theme.colors.default};
   padding: 3px;
   margin: 10px 0;
-  border: 2px solid ${(props): string => props.theme.colors.ohOrange};
+  border: 2px solid ${(props): string => props.theme.colors.primaryDefault};
   border-radius: 5%;
   box-shadow: 1px 1px 3px ${(props): string => props.theme.shadows.black};
   width: 80%;
@@ -26,6 +26,7 @@ const BaseButton = styled(motion.button)<localTypes.IDefaultChildren>`
     box-shadow: none;
     transition: ${(props): string => props.theme.transition.default};
     background-size: 30000% 100%;
+    border-radius: 0%;
   }
 `;
 
@@ -42,7 +43,7 @@ export const ExitButton = styled(motion.button)<localTypes.IDefaultChildren>`
   top: 0;
   left: 0;
   font-size: 2.3em;
-  color: ${(props): string => props.theme.colors.ohOrange};
+  color: ${(props): string => props.theme.colors.primaryDefault};
   background: none;
   border: none;
   margin: 5px;
@@ -58,8 +59,10 @@ export const ButtonLink = styled(ReactLink)<localTypes.IDefaultChildren>`
   transition: ${(props): string => props.theme.transition.semiSlow};
 `;
 
-export const Link = styled(ButtonLink)<localTypes.IDefaultChildren>`
+export const Link = styled(ButtonLink)<localTypes.ILinkProps>`
+  color: ${(props): string => props.$color ?? props.theme.colors.default};
+
   &:hover {
-    color: ${(props): string => props.theme.colors.ohOrange};
+    color: ${(props): string => props.theme.colors.primaryDefault};
   }
 `;

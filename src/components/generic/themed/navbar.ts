@@ -7,9 +7,7 @@ import type { INavbarProps } from '../../customs/index.js';
 export const NavContainer = styled(motion.div)<localTypes.IDefaultChildren>`
   position: fixed;
   top: 0;
-  left: ${(props): number => (props.theme.appState === enums.EActiveAppStates.Active ? 0 : -75)}px;
   height: 100vh;
-  width: ${(props): number => (props.theme.appState === enums.EActiveAppStates.Inactive ? 75 : 150)}px;
   background: ${(props): string => props.theme.background.semiTransparent};
   color: ${(props): string => props.theme.colors.default};
   padding: 0;
@@ -19,15 +17,24 @@ export const NavContainer = styled(motion.div)<localTypes.IDefaultChildren>`
   transition: ${(props): string => props.theme.transition.semiSlow};
   z-index: 7;
 
-  &:hover {
-    left: 0;
-    width: 150px;
+  @media (max-width: 767px) {
+    left: ${(props): number => (props.theme.appState === enums.EActiveAppStates.Active ? 0 : -100)}%;
+    width: ${(props): number => (props.theme.appState === enums.EActiveAppStates.Inactive ? 0 : 100)}%;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    left: ${(props): number => (props.theme.appState === enums.EActiveAppStates.Active ? 0 : -100)}%;
+    width: ${(props): number => (props.theme.appState === enums.EActiveAppStates.Inactive ? 0 : 100)}%;
+  }
+
+  @media (min-width: 1025px) {
+    left: ${(props): number => (props.theme.appState === enums.EActiveAppStates.Active ? 0 : -75)}px;
+    width: ${(props): number => (props.theme.appState === enums.EActiveAppStates.Inactive ? 75 : 150)}px;
   }
 `;
 
 export const NavBody = styled(motion.div)<localTypes.IDefaultChildren>`
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -37,14 +44,18 @@ export const NavBody = styled(motion.div)<localTypes.IDefaultChildren>`
   overflow-y: scroll;
   overflow-x: hidden;
   transition: ${(props): string => props.theme.transition.default};
-  opacity: ${(props): number => (props.theme.appState === enums.EActiveAppStates.Active ? 1 : 0)};
 
-  &::-webkit-scrollbar {
-    width: 0;
+  @media (max-width: 767px) {
+    flex-direction: column-reverse;
+    padding-bottom: 3vh;
   }
 
-  &:hover {
-    opacity: 1;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    flex-direction: column;
+  }
+
+  @media (min-width: 1025px) {
+    flex-direction: column;
   }
 `;
 
@@ -68,14 +79,13 @@ export const NavButton = styled('button')<localTypes.IDefaultChildren>`
 
   i {
     font-size: 2.3rem;
-    color: ${(props): string => props.theme.colors.ohOrange};
+    color: ${(props): string => props.theme.colors.primaryDefault};
     border-radius: 50%;
     background-size: 100% 100%;
   }
 `;
 
 export const NavSwitch = styled(NavButton)<INavbarProps>`
-  color: ${(props): string => props.theme.colors.ohOrange};
   position: fixed;
   bottom: 0;
   left: 0;

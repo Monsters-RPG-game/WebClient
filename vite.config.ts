@@ -4,8 +4,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 3003,
-    host: 'front.server.com',
+    port: 3003
   },
   build: {
     outDir: 'build',

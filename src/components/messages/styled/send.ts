@@ -16,5 +16,5 @@ export const SendContainerBody = styled(ContainerBody)<localTypes.IDefaultChildr
   width: 500px;
   height: 500px;
   border: 1px solid #ddd;
-  box-shadow: ${(props): string => `1px 0 1px ${props.theme.colors.ohOrange}`};
+  box-shadow: ${(props): string => `1px 0 1px ${props.theme.colors.primaryDefault}`};
 `;

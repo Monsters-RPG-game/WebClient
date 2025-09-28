@@ -27,12 +27,12 @@ export const Input = styled(motion.input)<localTypes.IDefaultChildren>`
 
   &:focus {
     max-width: 300px;
-    border-bottom: 1px solid ${(props): string => props.theme.colors.ohOrange};
+    border-bottom: 1px solid ${(props): string => props.theme.colors.primaryDefault};
     transition: ${(props): string => props.theme.transition.semiSlow};
 
     &::placeholder {
       transition: ${(props): string => props.theme.transition.semiSlow};
-      color ${(props): string => props.theme.colors.ohOrange};
+      color ${(props): string => props.theme.colors.primaryDefault};
     }
   }
 `;
@@ -69,7 +69,7 @@ export const Select = styled(motion.select)<localTypes.IDefaultChildren>`
   color: ${(props): string => props.theme.colors.default};
   background: linear-gradient(
     140deg,
-    ${(props): string => props.theme.colors.ohOrange} 0.5%,
+    ${(props): string => props.theme.colors.primaryDefault} 0.5%,
     ${(props): string => props.theme.background.semiTransparent} 0.5%
   );
   background-size: 100% 100%;
@@ -86,12 +86,19 @@ export const Select = styled(motion.select)<localTypes.IDefaultChildren>`
 `;
 
 export const Header = styled(motion.header)<localTypes.IDefaultChildren>`
-  width: 50%;
   text-align: center;
   font-size: 2rem;
   font-weight: lighter;
   letter-spacing: 0.9px;
   padding: 1rem;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 `;
 
 export const PanelHeader = styled(Header)<localTypes.IHeaderProps>`

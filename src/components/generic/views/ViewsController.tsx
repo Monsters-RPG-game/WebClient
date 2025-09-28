@@ -11,6 +11,26 @@ import Notifications from '../../notifications/views/Component.js';
 import Loading from './Loading';
 import { loginUser } from '../controller.js'
 import { useSelector } from 'react-redux';
+import { Dispatch } from '@reduxjs/toolkit';
+
+const preLogin = (
+    dispatch: Dispatch,
+    setFinished: React.Dispatch<React.SetStateAction<boolean>>,
+    setReady: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+    loginUser().then((data) => {
+        dispatch(hooks.logIn({ id: data }));
+    }).catch((_err) => {
+    }).finally(() => {
+    // Simple way to show loading screen to emulate loading.
+    setTimeout(() => {
+        setFinished(true);
+    }, 2000)
+    setTimeout(() => {
+      setReady(true);
+      }, 3000)
+    })
+}
 
 const StaticHandlers = ({ setTheme, settings, setSettings }: {
   setTheme: React.Dispatch<React.SetStateAction<DefaultTheme>>;
@@ -36,19 +56,7 @@ const ViewsController = ({ setAppActive, appActive, setTheme }: {
   const [finished, setFinished] = useState<boolean>(false);
 
   useEffect(() => {
-    loginUser().then((data) => {
-        dispatch(hooks.logIn({ id: data }));
-    }).catch((_err) => {
-
-    }).finally(() => {
-    // Simple way to show loading screen to emulate loading. Remove later
-    setTimeout(() => {
-        setFinished(true);
-    }, 2000)
-    setTimeout(() => {
-      setReady(true);
-      }, 3000)
-    })
+    preLogin(dispatch, setFinished, setReady)
   }, [dispatch]);
 
   return !ready ? (
@@ -64,9 +72,10 @@ const ViewsController = ({ setAppActive, appActive, setTheme }: {
       </MainApp>
     </>
   ) : (
-    <>
+      <MainApp id="app">
+        <Components.Navbar setAppActive={setAppActive} appActive={appActive} setSettings={setSettings} />
         <Router />
-    </>
+      </MainApp>
   )
 };
 

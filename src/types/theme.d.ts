@@ -8,8 +8,9 @@ declare module 'styled-components' {
     appState: enums.EActiveAppStates;
     themeState: enums.EThemes;
     colors: {
-      ohOrange: string;
-      ohAlmostOrange: string;
+      primaryDefault: string;
+      primaryDarker: string;
+      primaryLighter: string;
       default: string;
       semiDefault: string;
       opposite: string;

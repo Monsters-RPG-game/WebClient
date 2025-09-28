@@ -181,7 +181,7 @@ export default [...fixupConfigRules(compat.extends(
         "no-empty-function": 2,
         "no-eq-null": 2,
         "no-eval": 2,
-        "no-confusing-arrow": 2,
+        "no-confusing-arrow": 0,
         "no-constant-binary-expression": 0,
         "no-constant-condition": 2,
 

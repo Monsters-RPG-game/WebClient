@@ -7,8 +7,6 @@ const toggleNav = (
 ): void => {
   switch (appActive) {
     case enums.EActiveAppStates.Active:
-      return setAppActive(enums.EActiveAppStates.SemiActive);
-    case enums.EActiveAppStates.SemiActive:
       return setAppActive(enums.EActiveAppStates.Inactive);
     case enums.EActiveAppStates.Inactive:
     default:

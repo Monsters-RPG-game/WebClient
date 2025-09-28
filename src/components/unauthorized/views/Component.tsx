@@ -1,20 +1,20 @@
 import React from 'react';
 import * as animation from '../../../animations/index.js';
-import { Button, Container, ContainerBody, Header } from '../../customs/index.js';
+import { Button, Container, ContainerBody, H2Color, Span } from '../../customs/index.js';
 import { sendToLoginPage, sendToRegisterPage } from '../controllers/index.js';
+import theme from '../../customs/theme.js';
 
-const NotLogged = (): React.JSX.Element => {
+const NotAuthorized = (): React.JSX.Element => {
     return (
       <Container variants={animation.slideRight} initial="init" animate="visible" exit="exit">
         <ContainerBody>
-          <Header>Monsters</Header>
-          <h2>You are not logged in</h2>
+          <Span><H2Color $color={theme.colors.primaryDefault}>M</H2Color><H2Color>onsters</H2Color></Span>
+          <h3>You are not logged in</h3>
           <Button onClick={() => sendToRegisterPage()}>Register</Button>
           <Button onClick={() => sendToLoginPage()}>Log in</Button>
-          <h2>This app is work in progress...</h2>
         </ContainerBody>
       </Container>
   );
 };
 
-export default NotLogged
+export default NotAuthorized

@@ -20,7 +20,7 @@ export const LoadingCircle = styled(motion.div)`
     border-radius: 50%;
     box-sizing: border-box;
     border: 2px solid transparent;
-    border-right-color: ${(props): string => props.theme.colors.ohOrange};
+    border-right-color: ${(props): string => props.theme.colors.primaryDefault};
     animation: ${rotate} 2s linear infinite;
   }
 `;
@@ -36,7 +36,7 @@ export const LoadingPill = styled(motion.div)`
 
   &::after {
     content: '';
-    background: ${(props): string => props.theme.colors.ohOrange};
+    background: ${(props): string => props.theme.colors.primaryDefault};
     position: absolute;
     top: 0;
     left: 0;

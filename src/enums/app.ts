@@ -1,6 +1,5 @@
 export enum EActiveAppStates {
   Active = 'active',
-  SemiActive = 'semiActive',
   Inactive = 'inactive',
 }
 
